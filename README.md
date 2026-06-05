@@ -1,2 +1,2 @@
 # code-book
-A repository for coding challenges where I will push my coding solutions.
+Welcome to my repository where I will be solving Data Structures and Algorithms(DSA) questions ordered from beginner to advanced level problems.
