@@ -90,3 +90,4 @@ int main()
 // optimal_sum : tc = o() , sc = o() , good solution but downfall is integar size and sum value conflict. 
 // optimal_xor : tc = o() , sc = o() , new to me , bitwise manipulation introduced , xor of same number ( a^a = 0)
 // here the n is the value till which we have numbers like 1,n can have something missing . eg. n = 5 but nums.size = 4
+// as xor of itself is 0 and it work on bit by bit . so there is not overflow or large memory like sum and its more optimal so . 
