@@ -7,13 +7,11 @@ public:
     {
         int maxi = 0;
         int counter = 0;
-        for (int i = 1; i < nums.size(); i++)
+        for (int i = 0; i < nums.size(); i++)
         {
             if(nums[i] == 1){
                 counter++;
-                if(counter > maxi){
-                    maxi = counter;
-                } 
+                maxi = max(maxi , counter);
             }
             else{
                 counter = 0;
