@@ -78,7 +78,8 @@ int main()
 
     Solution obj;
     // int result = obj.brute(nums);
-    int result = obj.better(nums);
+    // int result = obj.better(nums);
+    int result = obj.optimal(nums);
 
     cout << "Majority element: " << result << endl;
 
