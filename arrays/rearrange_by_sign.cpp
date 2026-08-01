@@ -64,5 +64,5 @@ int main()
 
     return 0;
 }
-// brute : tc - O(n)+O(n) , sc - O(n)
+// brute : tc - O(n)+O(n/2) , sc - O(n)
 // optimal : tc - O(n) , sc - O(n)
