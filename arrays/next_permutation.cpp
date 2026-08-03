@@ -3,6 +3,11 @@ using namespace std;
 
 class Solution {
 public:
+    vector<int> better(vector<int>& nums){
+        next_permutation(nums.begin() , nums.end());
+        return nums;
+
+    }
     void nextPermutation(vector<int>& nums) {
         int index = -1;
 
@@ -33,7 +38,8 @@ int main() {
     vector<int> nums = {3,1,2};
     Solution sol;
 
-    sol.nextPermutation(nums);
+    // sol.nextPermutation(nums);
+    sol.better(nums);
 
     for (int num : nums) {
         cout << num << " ";
@@ -43,4 +49,7 @@ int main() {
     return 0;
 }
 
-//  tc - O(3n) , sc - O(1)
+// optimal -  tc - O(3n) , sc - O(1)
+// its brute solution find all possible permutation , it take time complexity of very high order of N!xN 
+// this is why we will not be using it 
+// using in-built stl library { next_permutation } is better sol . 
