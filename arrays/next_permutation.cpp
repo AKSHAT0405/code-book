@@ -42,3 +42,5 @@ int main() {
 
     return 0;
 }
+
+//  tc - O(3n) , sc - O(1)
