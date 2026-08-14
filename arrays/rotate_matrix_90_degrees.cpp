@@ -22,6 +22,17 @@ public:
             }
         }
     }
+    void optimal(vector<vector<int>>& matrix){
+        int n = matrix.size();
+        for (int i = 0; i < n-1; ++i) {
+            for (int j = i + 1; j < n; ++j) {
+                swap(matrix[i][j], matrix[j][i]);
+            }
+        }
+        for (int i = 0; i < n; ++i) {
+            reverse(matrix[i].begin(), matrix[i].end());
+        }
+    }
 };
 
 int main()
@@ -56,3 +67,6 @@ int main()
 }
 
 // brute : tc - O(n^2)  , sc - O(n^2)
+// optimal : tc - O(n^2)  , sc - O(1)
+//  opitmal -- first transpose then reverse each array .
+// here the transpose takes O(n/2*n/2) and reverse takes O(n*n/2) so total of O(n^2).
