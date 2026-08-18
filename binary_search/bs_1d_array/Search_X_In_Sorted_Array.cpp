@@ -51,3 +51,13 @@ int main()
 
     return 0;
 }
+// Time Complexity: O(log n)
+// Space Complexity: O(1)
+
+/*  You start with the whole array of size 𝑛.
+    Each iteration of the while loop cuts the search space in half (low to high shrinks by ~50%).
+    After the first step → size 𝑛/2, then 𝑛/4, then 𝑛/8, and so on.
+    This continues until the search space becomes 1 element.
+    Mathematically, the number of iterations is about:
+    log(base 2)𝑛
+    So the time complexity is:𝑂(log𝑛) */
