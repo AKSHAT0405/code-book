@@ -52,3 +52,7 @@ int main()
 }
 // Time Complexity: O(log n)
 // Space Complexity: O(1)
+
+// for overflow case where max element is int max ,, we take mid = low + (high - low)/2 
+//  it finds mid and also prevent from overlfow of memory in varaible due to (INT_MAX+INT_MAX)
+//  either we use this or use long long for low , high and mid. 
