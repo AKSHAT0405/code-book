@@ -22,8 +22,15 @@ public:
 
     pair<int, int> better(vector<int>& nums, int target)
     {
-        
-        return {-1, -1};
+        int n = nums.size();
+        int x = lower_bound(nums.begin(),nums.end() , target) - nums.begin();
+        int y = upper_bound(nums.begin() , nums.end() , target) - nums.begin();
+        if(x == n || nums[x] != target){
+            return {-1,-1};
+        }
+        else{
+            return {x , y-1};
+        }
     }
 
     pair<int, int> optimal(vector<int>& nums, int target)
@@ -57,3 +64,6 @@ int main()
 
     return 0;
 }
+
+//  brute : tc - O(n) , sc - (1)
+//  better : tc - 2*O(n) -- base 2  , sc - (1)
