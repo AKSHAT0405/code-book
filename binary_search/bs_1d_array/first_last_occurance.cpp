@@ -20,7 +20,7 @@ public:
         return {start , end };
     }
 
-    pair<int, int> better(vector<int>& nums, int target)
+    pair<int, int> optimal(vector<int>& nums, int target)
     {
         int n = nums.size();
         int x = lower_bound(nums.begin(),nums.end() , target) - nums.begin();
@@ -33,10 +33,47 @@ public:
         }
     }
 
-    pair<int, int> optimal(vector<int>& nums, int target)
-    {
-        
-        return {-1, -1};
+    int firstOccurrence(vector<int> &nums, int n, int x) {
+        int low = 0, high = n - 1;
+        int first = -1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (nums[mid] == x) {
+                first = mid;
+                high = mid - 1; 
+            } else if (nums[mid] < x) {
+                low = mid + 1; 
+            } else {
+                high = mid - 1;
+            }
+        }
+        return first;
+    }
+    int lastOccurrence(vector<int> &nums, int n, int x) {
+        int low = 0, high = n - 1;
+        int last = -1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (nums[mid] == x) {
+                last = mid;
+                low = mid + 1; 
+            } else if (nums[mid] < x) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return last;
+    }
+
+    pair<int, int> manual_binary_search(vector<int> &nums, int k) {
+        int n = nums.size();
+        int first = firstOccurrence(nums, n, k);
+        if (first == -1) {
+            return {-1, -1}; 
+        }
+        int last = lastOccurrence(nums, n, k);
+        return {first, last};
     }
 };
 
@@ -58,6 +95,8 @@ int main()
 
     Solution obj;
     pair<int, int> result = obj.brute(nums, target);
+    // pair<int, int> result = obj.optimal(nums, target);
+    // pair<int, int> result = obj.manual_binary_search(nums, target);
 
     cout << "First occurrence: " << result.first << endl;
     cout << "Last occurrence: " << result.second << endl;
@@ -66,4 +105,6 @@ int main()
 }
 
 //  brute : tc - O(n) , sc - (1)
-//  better : tc - 2*O(n) -- base 2  , sc - (1)
+//  optimal : tc - 2*O(n) -- base 2  , sc - (1)
+//  manual binary search -- is for interviews when interviewer wants manual use of binary search
+//  and he is not satisfied by stl library of lower and upper bound
