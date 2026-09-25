@@ -82,3 +82,5 @@ int main()
 
     return 0;
 }
+// optimal - tc - O(log2n)  best
+// TC - O(n/2)   worst
