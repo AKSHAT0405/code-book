@@ -16,41 +16,31 @@ public:
     bool optimal(vector<int>& nums, int target)
     {
         int n = nums.size();
-        int low = 0; int high = n-1;
-        while (low <= high)
-        {
-            int mid = (low + high)/2;
-            
-            if(nums[mid] == target){
-                return mid;
-            }
-            else if (nums[low] == nums[mid] && nums[mid] == nums[high]) {
+        int low = 0;
+        int high = n - 1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            if (nums[mid] == target) {
+                return true;
+            } else if (nums[low] == nums[mid] && nums[mid] == nums[high]) {
                 low = low + 1;
                 high = high - 1;
-            }
-            else if(nums[low] == nums[high]){
-                low = low + 1;
-                high = high - 1;
-                continue;
-            }
-            else if(nums[low] <= nums[mid]){
-                if(target >= nums[low] && target <= nums[mid]){
+            } else if (nums[low] <= nums[mid]) {
+                if (target >= nums[low] && target <= nums[mid]) {
                     high = mid - 1;
-                }
-                else{
+                } else {
                     low = mid + 1;
                 }
-            }
-            else{
-                if(target >= nums[mid] && target <= nums[high]){
+            } else {
+                if (target >= nums[mid] && target <= nums[high]) {
                     low = mid + 1;
-                }
-                else{
+                } else {
                     high = mid - 1;
                 }
             }
         }
-        return -1; 
+        return false; 
     }
 };
 
