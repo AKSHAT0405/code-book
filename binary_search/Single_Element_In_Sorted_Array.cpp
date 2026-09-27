@@ -107,3 +107,6 @@ int main()
 
     return 0;
 }
+
+// brute : tc - O(n) , sc - O(1)
+// optimal : tc - O(log2n) , sc - O(1)
