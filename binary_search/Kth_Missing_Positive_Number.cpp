@@ -5,22 +5,15 @@ class Solution {
 public:
     int brute(vector<int>& nums, int k)
     {
-        int num = 1;
-        int i = 0;
-        while(true)
-        {
-            if(i < nums.size() && nums[i] == num)
-            {
-                i++;
-            }
-            else
-            {
-                k--;
-                if (k == 0)
-                return num;
-            }
-            num++;
+        for(int i = 0; i < nums.size(); i++){
+            if(nums[i] <= k){
+                k++;
+            } 
+            else{
+                break;
+            } 
         }
+        return k;
     }
 
     int better(vector<int>& nums, int k)
@@ -54,9 +47,11 @@ int main()
 
     Solution obj;
 
-    int result = obj.optimal(nums, k);
+    int result = obj.brute(nums, k);
 
     cout << "Kth missing positive number: " << result << endl;
 
     return 0;
 }
+
+// brute : tc - O(n) , sc - O(1)
