@@ -4,19 +4,47 @@ using namespace std;
 class Solution {
 private:
     bool canPlace(vector<int>& stalls, int cows, int distance) {
-        // write feasibility logic
+        int cow_count = 1; 
+        int last_stall = stalls[0];
+        for(int i = 1; i < stalls.size(); i++){
+            if(stalls[i] - last_stall >= distance){
+                cow_count++;
+                last_stall = stalls[i];
+            }
+        }
+        if(cow_count >= cows){
+            return true;
+        }
         return false;
     }
 
 public:
     int brute(vector<int>& stalls, int cows) {
-        // write brute solution
-        return -1;
+        sort(stalls.begin() , stalls.end());
+        int n = stalls.size();
+        int low = 0; int high = stalls[n-1] - stalls[0];
+        for(int i = low; i <= high; i++){
+            if(! canPlace(stalls , cows , i)){
+                return i-1;   
+            }
+        }
+        return high;
     }
 
     int optimal(vector<int>& stalls, int cows) {
-        // write binary search solution
-        return -1;
+        sort(stalls.begin() , stalls.end());
+        int n = stalls.size();
+        int low = 0; int high = stalls[n-1] - stalls[0];
+        while(low <= high){
+            int mid = low + (high - low)/2;
+            if(canPlace(stalls , cows , mid)){
+                low = mid + 1;
+            }
+            else{
+                high = mid - 1;  
+            }
+        }
+        return high;
     }
 };
 
@@ -43,3 +71,6 @@ int main() {
 
     return 0;
 }
+
+// brute : tc - O(nlogn) + O(n * (maxi - mini)) , sc - O(1)
+// optimal : tc - O(nlogn) + O(n * log2(maxi - mini)) , sc - O(1)
