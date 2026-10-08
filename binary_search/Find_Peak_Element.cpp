@@ -69,4 +69,5 @@ int main() {
     cout << "Optimal: " << obj.optimal(nums) << endl;
 
     return 0;
-}
+// brute : tc - O(n) , sc - O(1)
+// optimal : tc - O(n) , sc - O(1)
